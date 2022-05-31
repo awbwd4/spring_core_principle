@@ -14,12 +14,32 @@ public class OrderServiceImpl implements OrderService{
     private final MemberRepository memberRepository;
     private final DiscountPolicy discountPolicy;
 
+//    @Autowired(required = false)
+//    public void setMemberRepository(MemberRepository memberRepository) {
+//        System.out.println("memberRepository = " + memberRepository);
+//        this.memberRepository = memberRepository;
+//    }
 
-    @Autowired
+//    @Autowired
+//    public void setDiscountPolicy(DiscountPolicy discountPolicy) {
+//        System.out.println("discountPolicy = " + discountPolicy);
+//        this.discountPolicy = discountPolicy;
+//    }
+
+    @Autowired // 생성자가 하나라면 autowired가 없이도 자동으로 주입된다.
     public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
+        System.out.println("OrderServiceImpl.OrderServiceImpl");
         this.memberRepository = memberRepository;
         this.discountPolicy = discountPolicy;
     }
+
+//    @Autowired
+//    public void init(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
+//        this.memberRepository = memberRepository;
+//        this.discountPolicy = discountPolicy;
+//    }
+
+
 
     @Override
     public Order createOrder(Long memberId, String itemName, int itemPrice) {
@@ -31,6 +51,7 @@ public class OrderServiceImpl implements OrderService{
 
     //테스트 용도
     public MemberRepository getMemberRepository() {
+        System.out.println("@autowired memberRepository = " + memberRepository);
         return memberRepository;
     }
 }
