@@ -29,7 +29,7 @@ public class AutoAppConfig {
 //    OrderService orderService() {
 ////        return new OrderServiceImpl();
 //    }
-
+//
 //    @Bean(name = "memoryMemberRepository")
 //    MemberRepository memberRepository(){
 //        return new MemoryMemberRepository();

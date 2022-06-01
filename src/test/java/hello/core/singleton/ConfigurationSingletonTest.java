@@ -6,6 +6,8 @@ import hello.core.member.MemberServiceImpl;
 import hello.core.order.OrderServiceImpl;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.BeanNotOfRequiredTypeException;
+import org.springframework.beans.factory.NoSuchBeanDefinitionException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
@@ -22,17 +24,22 @@ public class ConfigurationSingletonTest {
         MemberRepository memberRepository = ac.getBean("memberRepository", MemberRepository.class);
 
 
+//        org.junit.jupiter.api.Assertions.assertThrows(
+//                BeanNotOfRequiredTypeException.class,
+//                ()->ac.getBean("orderService", OrderServiceImpl.class)
+////                ()->ac.getBean("memberService", MemberServiceImpl.class)
+//        );
 
 
 
         MemberRepository memberRepository1 = memberService.getMemberRepository();
-        MemberRepository memberRepository2 = orderService.getMemberRepository();
+//        MemberRepository memberRepository2 = orderService.getMemberRepository();
         System.out.println("memberService -> memberRepository1 = " + memberRepository1);
-        System.out.println("orderService -> memberRepository2 = " + memberRepository2);
+//        System.out.println("orderService -> memberRepository2 = " + memberRepository2);
         System.out.println("memberRepository = " + memberRepository);
 
         assertThat(memberService.getMemberRepository()).isSameAs(memberRepository);
-        assertThat(orderService.getMemberRepository()).isSameAs(memberRepository);
+//        assertThat(orderService.getMemberRepository()).isSameAs(memberRepository);
 
     }
 
