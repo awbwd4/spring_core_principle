@@ -21,6 +21,9 @@ public class BeanLifeCycleTest {
 
     @Configuration
     static class LifeCycleConfig{
+//        @Bean(initMethod = "init")
+//        @Bean(initMethod = "init", destroyMethod = "close")
+
         @Bean
         public NetworkClient networkClient(){
             NetworkClient networkClient = new NetworkClient(); // 이때 생성자가 호출됨 객체 생성 시점이므로.
